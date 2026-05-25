@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask + MySQL CRUD 예제 (jQuery)</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- ❗ Jinja 제거 → 정적 경로로 수정 -->
+    <script src="/app.js"></script>
+
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        form { background: #f4f4f4; padding: 20px; margin-bottom: 20px; border-radius: 5px; }
+        .form-group { margin-bottom: 10px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group textarea { width: 100%; padding: 8px; box-sizing: border-box; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        button { padding: 6px 12px; cursor: pointer; margin-right: 5px; }
+        .btn-submit { background-color: #4CAF50; color: white; border: none; padding: 10px 15px; }
+        .btn-delete { background-color: #f44336; color: white; border: none; }
+    </style>
+</head>
+
+<body>
+
+    <h2>상품 관리 시스템 (jQuery 버전)</h2>
+
+    <form id="productForm">
+        <input type="hidden" id="productId">
+
+        <div class="form-group">
+            <label for="name">상품명</label>
+            <input type="text" id="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="price">가격</label>
+            <input type="number" id="price" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">설명</label>
+            <textarea id="description" rows="3"></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn-submit">
+            상품 등록
+        </button>
+
+        <button type="button" id="cancelBtn" style="display:none;">
+            취소
+        </button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>상품명</th>
+                <th>가격</th>
+                <th>설명</th>
+                <th>관리</th>
+            </tr>
+        </thead>
+
+        <tbody id="productTableBody"></tbody>
+    </table>
+
+</body>
+</html>
